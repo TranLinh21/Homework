@@ -26,7 +26,7 @@ Box addfood()
     initSDL(window, renderer);
 
      while (true){
-            bool press=false;
+            bool nstop=false;
     if(restart==false) {waitUntilKeyPressed(),restart=true;}
     else{
     Box p=addfood();
@@ -38,8 +38,8 @@ Box addfood()
     Snake.push_back(x2);
     Snake.push_back(x3);
     int score=2;
-    Box Node(30,10);
-    Node.stepX=10;
+    Box Head(30,10);
+    Head.stepX=10;
     while (Snake[score].inside(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)&&(restart)) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // white
     SDL_RenderClear(renderer);
@@ -56,19 +56,19 @@ Box addfood()
     SDL_RenderPresent(renderer);
     SDL_Delay(50);
     //Snake[score].move();
-    if (press){
-    Node.move();
+    if (nstop){
+    Head.move();
     //cout<<Node.x<<" "<<Node.y<<endl;
-            Box newn(Node.x,Node.y);
-    Snake.push_back(newn);
-    if (Node.compare(p)) {score++; p=addfood();}
+            Box newHead(Head.x,Head.y);
+    Snake.push_back(newHead);
+    if (Head.compare(p)) {score++; p=addfood();}
     else {
         Snake.erase(Snake.begin());
     };
     }
     else {
         waitUntilKeyPressed();
-        press=true;
+        nstop=true;
     };
      if ( SDL_PollEvent(&e) == 0) continue;
         if (e.type == SDL_QUIT) break;
@@ -76,28 +76,28 @@ Box addfood()
         	switch (e.key.keysym.sym) {
         		case SDLK_ESCAPE: quitSDL(window,renderer); break;
         		case SDLK_SPACE:
-        		if(press) { press=false;
+        		if(nstop) { nstop=false;
         		}
         		else {
-        		    press=true;
+        		    nstop=true;
 
         		};
         		    break;
-        		case SDLK_LEFT:if (Node.stepX!=10) Node.turnLeft();
+        		case SDLK_LEFT:if (Head.stepX!=10) Head.turnLeft();
         			break;
-            	case SDLK_RIGHT:if (Node.stepX!=-10) Node.turnRight();
+            	case SDLK_RIGHT:if (Head.stepX!=-10) Head.turnRight();
             		break;
-            	case SDLK_DOWN:if (Node.stepY!=-10) Node.turnDown();
+            	case SDLK_DOWN:if (Head.stepY!=-10) Head.turnDown();
 					break;
-            	case SDLK_UP:if (Node.stepY!=10) Node.turnUp();
+            	case SDLK_UP:if (Head.stepY!=10) Head.turnUp();
             		break;
-                case SDLK_a:if (Node.stepX!=10) Node.turnLeft();
+                case SDLK_a:if (Head.stepX!=10) Head.turnLeft();
         			break;
-            	case SDLK_d:if (Node.stepX!=-10) Node.turnRight();
+            	case SDLK_d:if (Head.stepX!=-10) Head.turnRight();
             		break;
-            	case SDLK_s:if (Node.stepY!=-10) Node.turnDown();
+            	case SDLK_s:if (Head.stepY!=-10) Head.turnDown();
 					break;
-            	case SDLK_w:if (Node.stepY!=10) Node.turnUp();
+            	case SDLK_w:if (Head.stepY!=10) Head.turnUp();
             		break;
         		default: break;
 			};
