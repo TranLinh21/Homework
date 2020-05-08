@@ -15,13 +15,15 @@ struct Menu
     SDL_Texture *texture1, *texture2, *Snaketext,*spacetext, *movetext, *exittext, *textScore;
     bool mg=true, me=true;
     int color =1;
+
+
     void getrect(SDL_Renderer *renderer, int x, int y, char *text,
     TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect) {
     int text_width;
     int text_height;
     SDL_Surface *surface;
     SDL_Color textColor;
-    if (color==1)  textColor = {0, 0, 128};
+    if (color==1)  textColor = {255, 0, 0};
     else if (color==2) textColor = {0, 0, 0};
     else if (color==3) textColor = {128, 0, 0};
 
@@ -42,9 +44,8 @@ struct Menu
          string font_path;
     font_path = "fone.TTF";
     color=1;
-     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // white
+     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // green
     SDL_RenderClear(renderer);
-    //SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer);
     TTF_Init();
     TTF_Font *font = TTF_OpenFont(font_path.c_str(), 30);
     TTF_Font *Snake = TTF_OpenFont(font_path.c_str(),70);
@@ -76,7 +77,7 @@ struct Menu
          string font_path;
     font_path = "fone.TTF";
     color=3;
-     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // white
+     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // green
     SDL_RenderClear(renderer);
 
     TTF_Init();
