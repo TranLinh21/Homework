@@ -1,1 +1,1 @@
-# SDL2.h, SDL2.cpp, Box.h lay tu  bai hoc
+# SDL2.h , Box.h  lấy từ tài liệu học.
