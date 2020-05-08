@@ -75,7 +75,7 @@ void menu_gameover (Menu menu, bool Begin, int score, SDL_Renderer* renderer,SDL
     bool Begin= false;
     int score=0;
     while (true){
-        bool nstop = false;
+            bool nstop = false;
             if (restart){
                Box p=addfood();
                vector<Box> Snake;
@@ -123,36 +123,36 @@ void menu_gameover (Menu menu, bool Begin, int score, SDL_Renderer* renderer,SDL
         		               if(nstop)  nstop=false;
         		               else nstop=true;
         		               break;
-        		            case SDLK_LEFT:if (Head.stepX!=10) Head.turnLeft();
+        		    case SDLK_LEFT:if (Head.stepX!=10) Head.turnLeft();
         			           break;
             	            case SDLK_RIGHT:if (Head.stepX!=-10) Head.turnRight();
-                               break;
+                                            break;
             	            case SDLK_DOWN:if (Head.stepY!=-10) Head.turnDown();
-					           break;
+					   break;
             	            case SDLK_UP:if (Head.stepY!=10) Head.turnUp();
-            	 	           break;
+            	 	                 break;
                             case SDLK_a:if (Head.stepX!=10) Head.turnLeft();
-        			          break;
+        			        break;
             	            case SDLK_d:if (Head.stepX!=-10) Head.turnRight();
-            		          break;
+            		                break;
             	            case SDLK_s:if (Head.stepY!=-10) Head.turnDown();
-					          break;
+					break;
                             case SDLK_w:if (Head.stepY!=10) Head.turnUp();
-                              break;
+                                        break;
         		            default: break;
 			                };
                };
                };
-    restart=false;
-    }
-    else
-    {
-        menu_gameover(menu, Begin, score-3, renderer, window, e);
-        Begin=true;
-        menu.closeMenu();
-        restart=true;
-    }
-     };
+              restart=false;
+              }
+              else
+              {
+                         menu_gameover(menu, Begin, score-3, renderer, window, e);
+                         Begin=true;
+                         menu.closeMenu();
+                         restart=true;
+               }
+                 };
     return 0;
 
 }
